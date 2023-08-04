@@ -37,15 +37,15 @@ Maximize frame on startup
 Good old defaults
 #+begin_src emacs-lisp
 (setq-default delete-by-moving-to-trash t
-							line-number-mode 1 ;; (modeline)
-							column-number-mode 1 ;; (modeline)
-							global-display-line-numbers-mode nil
-							global-hl-line-mode nil
-							global-hl-line-modes nil
-							display-line-numbers-type nil
-							editorconfig-mode 1
-							indent-tabs-mode t
-							tab-width 3)
+	line-number-mode 1 ;; (modeline)
+	column-number-mode 1 ;; (modeline)
+	global-display-line-numbers-mode nil
+	global-hl-line-mode nil
+	global-hl-line-modes nil
+	display-line-numbers-type nil
+	editorconfig-mode 1
+	indent-tabs-mode t
+	tab-width 3)
 #+end_src
 
 Smartparens get in the way (it's faster to type)
@@ -56,15 +56,15 @@ Smartparens get in the way (it's faster to type)
 Make Renaming File + Buffer easy
 #+begin_src emacs-lisp
 (defun rename-file-and-buffer ()
-	"Rename the current buffer and the file it is visiting."
-	(interactive)
-	(let ((filename (buffer-file-name)))
-		(if (not (and filename (file-exists-p filename)))
+ "Rename the current buffer and the file it is visiting."
+ (interactive)
+ (let ((filename (buffer-file-name)))
+  (if (not (and filename (file-exists-p filename)))
 	(message "Buffer is not visiting a file!")
-			(let ((new-name (read-file-name "New name: " filename)))
-	(cond ((vc-backend filename) (vc-rename-file filename new-name))
-							(t (rename-file filename new-name t)
-		 (set-visited-file-name new-name t)))
+	(let ((new-name (read-file-name "New name: " filename)))
+	 (cond ((vc-backend filename) (vc-rename-file filename new-name))
+	  (t (rename-file filename new-name t)
+		(set-visited-file-name new-name t)))
 	))))
 #+end_src
 
@@ -112,20 +112,20 @@ My *ultimate* theme.
 **** Cursor
 #+begin_src emacs-lisp
 (setq evil-normal-state-cursor '(box)
-			evil-insert-state-cursor '(box)
-			evil-visual-state-cursor '(hollow)
-			evil-operator-state-cursor '(box "#404040")
-			evil-replace-state-cursor '(hollow))
+	evil-insert-state-cursor '(box)
+	evil-visual-state-cursor '(hollow)
+	evil-operator-state-cursor '(box "#404040")
+	evil-replace-state-cursor '(hollow))
 #+end_src
 
 *** Modeline
 "~path/filename"
 #+begin_src emacs-lisp
 (setq-default mode-line-buffer-identification
-							'(:eval (propertize
-											 (concat (abbreviate-file-name (file-name-directory buffer-file-name))
-															 (file-name-nondirectory buffer-file-name))
-											 'face 'mode-line-filename)))
+ '(:eval (propertize
+		 (concat (abbreviate-file-name (file-name-directory buffer-file-name))
+		  (file-name-nondirectory buffer-file-name))
+		 'face 'mode-line-filename)))
 #+end_src
 
 And a simple modeline:
@@ -172,18 +172,18 @@ Life-time savers (kinda).
 (map!
  :leader
  (:prefix-map ("f" . "file")
-							(:prefix-map ("g" . "goto")
-							 :desc "tmp"          "t" (cmd! (find-file "/tmp"))
-							 :desc "drive"        "/" (cmd! (find-file "/"))
-							 :desc "home"         "h" (cmd! (find-file "~"))
-							 :desc "zk"           "z" (cmd! (find-file "~/zk"))
-							 :desc "books"        "g" (cmd! (find-file "~/zk/books"))
-							 :desc "Org Roam"       "g" (cmd! (find-file "~/zk/org"))
-							 :desc "projects"     "p" (cmd! (find-file "~/zk/projects"))
-							 :desc "music"        "m" (cmd! (find-file "~/zk/music"))
-							 :desc "desktop"      "D" (cmd! (find-file "~/Desktop"))
-							 :desc "downloads"    "d" (cmd! (find-file "~/Downloads"))
-							 )))
+  (:prefix-map ("g" . "goto")
+	:desc "tmp"          "t" (cmd! (find-file "/tmp"))
+	:desc "drive"        "/" (cmd! (find-file "/"))
+	:desc "home"         "h" (cmd! (find-file "~"))
+	:desc "zk"           "z" (cmd! (find-file "~/zk"))
+	:desc "books"        "g" (cmd! (find-file "~/zk/books"))
+	:desc "Org Roam"       "g" (cmd! (find-file "~/zk/org"))
+	:desc "projects"     "p" (cmd! (find-file "~/zk/projects"))
+	:desc "music"        "m" (cmd! (find-file "~/zk/music"))
+	:desc "desktop"      "D" (cmd! (find-file "~/Desktop"))
+	:desc "downloads"    "d" (cmd! (find-file "~/Downloads"))
+  )))
 #+end_src
 
 *** Counsel
@@ -191,11 +191,11 @@ Life-time savers (kinda).
 (map!
  :leader
  (:prefix-map ("c" . "code")
-							(:prefix-map ("b" . "Counsel")
-							 :desc "Find" "/" 'counsel-dash
-							 :desc "Find (by Cursor)" "." 'counsel-dash-at-point
-							 :desc "Activate Doc in Buffer" "a" 'counsel-dash-activate-docset
-							 :desc "Deactivate Doc to Buffer" "d" 'counsel-dash-deactivate-docset)))
+  (:prefix-map ("b" . "Counsel")
+	:desc "Find" "/" 'counsel-dash
+	:desc "Find (by Cursor)" "." 'counsel-dash-at-point
+	:desc "Activate Doc in Buffer" "a" 'counsel-dash-activate-docset
+	:desc "Deactivate Doc to Buffer" "d" 'counsel-dash-deactivate-docset)))
 #+end_src
 
 *** Org-Roam
@@ -228,44 +228,44 @@ have flags applied to tweak their behaviour.
 ;; Press 'K' on a module to view its documentation, and 'gd' to browse its directory.
 
 (doom! :input
-			 <<doom-input>>
+	<<doom-input>>
 
-			 :completion
-			 <<doom-completion>>
+	:completion
+	<<doom-completion>>
 
-			 :ui
-			 <<doom-ui>>
+	:ui
+	<<doom-ui>>
 
-			 :editor
-			 <<doom-editor>>
+	:editor
+	<<doom-editor>>
 
-			 :emacs
-			 <<doom-emacs>>
+	:emacs
+	<<doom-emacs>>
 
-			 :term
-			 <<doom-term>>
+	:term
+	<<doom-term>>
 
-			 :checkers
-			 <<doom-checkers>>
+	:checkers
+	<<doom-checkers>>
 
-			 :tools
-			 <<doom-tools>>
+	:tools
+	<<doom-tools>>
 
-			 :os
-			 <<doom-os>>
+	:os
+	<<doom-os>>
 
-			 :lang
-			 <<doom-lang>>
+	:lang
+	<<doom-lang>>
 
-			 :email
-			 <<doom-email>>
+	:email
+	<<doom-email>>
 
-			 :app
-			 <<doom-app>>
+	:app
+	<<doom-app>>
 
-			 :config
-			 <<doom-config>>
-			 )
+	:config
+	<<doom-config>>
+	)
 #+end_src
 
 **** Structure
@@ -597,9 +597,9 @@ Let's get those fingers moving.
 The worst part about ~org-mode~? Having to leave it.
 #+begin_src emacs-lisp
 (package! org-pandoc-import
-	:recipe (:host github
-					 :repo "tecosaur/org-pandoc-import"
-					 :files ("*.el" "filters" "preprocessors")))
+ :recipe (:host github
+	 :repo "tecosaur/org-pandoc-import"
+	 :files ("*.el" "filters" "preprocessors")))
 #+end_src
 
 When in need of logging commands.
@@ -710,13 +710,13 @@ i find it a bit intrusive to have it automatically on. code is prose.
 #+end_src
 
 #+begin_src emacs-lisp
-(setq prettier-js-args '(
-			 "--use-tabs" "true"
-			 "--tab-width" 2
-			 "--single-quote" "true"
-			 "--trailing-comma" "all"
-			 "--bracket-spacing" "false"
-			 ))
+(setq prettier-js-args 
+ '("--use-tabs" "true"
+	 "--tab-width" 2
+	 "--single-quote" "true"
+	 "--trailing-comma" "all"
+	 "--bracket-spacing" "false"
+  ))
 #+end_src
 
 *** Which-key
@@ -757,12 +757,12 @@ Also think that having evil- appear in so many popups is a bit too verbose, let�
 I ❤️ my keyboard
 #+begin_src emacs-lisp
 (global-disable-mouse-mode)
-;; And, for evil's individual states.
-(mapc #'disable-mouse-in-keymap
-      (list evil-motion-state-map
-            evil-normal-state-map
-            evil-visual-state-map
-            evil-insert-state-map))
+	;; And, for evil's individual states.
+	(mapc #'disable-mouse-in-keymap
+	 (list evil-motion-state-map
+	  evil-normal-state-map
+	  evil-visual-state-map
+	  evil-insert-state-map))
 #+end_src
 
 *** Nov (EPUBs)
@@ -800,9 +800,9 @@ The thinking process.
 	;;  :hook (after-init . org-roam-ui-mode)
 	:config
 	(setq org-roam-ui-sync-theme t
-				org-roam-ui-follow t
-				org-roam-ui-update-on-save t
-				org-roam-ui-open-on-start t))
+			org-roam-ui-follow t
+			org-roam-ui-update-on-save t
+			org-roam-ui-open-on-start t))
 #+end_src
 
 *** Org-Pandoc
@@ -859,49 +859,49 @@ RSS for life.
 Lookup search engines
 #+begin_src emacs-lisp
 (setq +lookup-provider-url-alist
-			'(
-				("DuckDuckGo" +lookup--online-backend-duckduckgo "https://duckduckgo.com/?q=%s")
-				("Hoogle" "https://hoogle.haskell.org/?hoogle=%s")
-				("Google" +lookup--online-backend-google "https://google.com/search?q=%s")
-				("Google images" "https://www.google.com/images?q=%s")
-				("Google maps" "https://maps.google.com/maps?q=%s")
-				("Project Gutenberg" "http://www.gutenberg.org/ebooks/search/?query=%s")
-				("Archive" "https://archive.org/searchresults.php?search=%s&sin=&limit=100&fts_terms=&start=0&searchAll=yes&submit=this+was+submitted")
-				("PDFdrive" "https://www.pdfdrive.com/search?q=%s&pagecount=&pubyear=&searchin=&em=")
-				("DevDocs.io" "https://devdocs.io/#q=%s")
-				("StackOverflow" "https://stackoverflow.com/search?q=%s")
-				("Github" "https://github.com/search?ref=simplesearch&q=%s")
-				("Youtube" "https://youtube.com/results?aq=f&oq=&search_query=%s")
-				("Twitter" "https://twitter.com/search?q=%s")
-				("Wolfram alpha" "https://wolframalpha.com/input/?i=%s")
-				("Wikipedia" "https://wikipedia.org/search-redirect.php?language=en&go=Go&search=%s")
-				("MDN" "https://developer.mozilla.org/en-US/search?q=%s")
-				("Rust Docs" "https://doc.rust-lang.org/std/?search=%s")
-				("Doom Emacs issues" "https://github.com/hlissner/doom-emacs/issues?q=is%%3Aissue+%s")
-				)
-			)
+ '(
+	 ("DuckDuckGo" +lookup--online-backend-duckduckgo "https://duckduckgo.com/?q=%s")
+	 ("Hoogle" "https://hoogle.haskell.org/?hoogle=%s")
+	 ("Google" +lookup--online-backend-google "https://google.com/search?q=%s")
+	 ("Google images" "https://www.google.com/images?q=%s")
+	 ("Google maps" "https://maps.google.com/maps?q=%s")
+	 ("Project Gutenberg" "http://www.gutenberg.org/ebooks/search/?query=%s")
+	 ("Archive" "https://archive.org/searchresults.php?search=%s&sin=&limit=100&fts_terms=&start=0&searchAll=yes&submit=this+was+submitted")
+	 ("PDFdrive" "https://www.pdfdrive.com/search?q=%s&pagecount=&pubyear=&searchin=&em=")
+	 ("DevDocs.io" "https://devdocs.io/#q=%s")
+	 ("StackOverflow" "https://stackoverflow.com/search?q=%s")
+	 ("Github" "https://github.com/search?ref=simplesearch&q=%s")
+	 ("Youtube" "https://youtube.com/results?aq=f&oq=&search_query=%s")
+	 ("Twitter" "https://twitter.com/search?q=%s")
+	 ("Wolfram alpha" "https://wolframalpha.com/input/?i=%s")
+	 ("Wikipedia" "https://wikipedia.org/search-redirect.php?language=en&go=Go&search=%s")
+	 ("MDN" "https://developer.mozilla.org/en-US/search?q=%s")
+	 ("Rust Docs" "https://doc.rust-lang.org/std/?search=%s")
+	 ("Doom Emacs issues" "https://github.com/hlissner/doom-emacs/issues?q=is%%3Aissue+%s")
+  )
+ )
 #+end_src
 
 *** IRC Circe Config
 #+begin_src emacs-lisp
 (defun my-fetch-password (&rest params)
-  (require 'auth-source)
-  (let ((match (car (apply 'auth-source-search params))))
-    (if match
-        (let ((secret (plist-get match :secret)))
-          (if (functionp secret)
-              (funcall secret)
-            secret))
-      (error "Password not found for %S" params))))
+ (require 'auth-source)
+ (let ((match (car (apply 'auth-source-search params))))
+  (if match
+	(let ((secret (plist-get match :secret)))
+	 (if (functionp secret)
+	  (funcall secret)
+	  secret))
+	(error "Password not found for %S" params))))
 
 (defun my-nickserv-password (server)
-  (my-fetch-password :user "zedkaido" :machine "irc.libera.chat"))
+ (my-fetch-password :user "zedkaido" :machine "irc.libera.chat"))
 
-(setq circe-network-options
-      '(("Libera Chat"
-         :nick "zedkaido"
-         :channels ("#web" "#internet" "200ok" "haskell")
-         :nickserv-password my-nickserv-password)))
+	(setq circe-network-options
+	 '(("Libera Chat"
+			 :nick "zedkaido"
+			 :channels ("#web" "#internet" "200ok" "haskell")
+			 :nickserv-password my-nickserv-password)))
 #+end_src
 
 *** ZEN
@@ -978,11 +978,11 @@ delete all buffers except the current one
 *** disable ~evil-mode~ for some modes
 #+begin_src emacs-lisp
 (mapc (lambda (mode)
-	(evil-set-initial-state mode 'emacs)) '(elfeed-show-mode
-						efleed-search-mode
-						forge-pullreq-list-mode
-						image-dired-mode
-						image-dired-thumbnail-mode
-						Info-mode
-						))
+		 (evil-set-initial-state mode 'emacs)) '(elfeed-show-mode
+			 efleed-search-mode
+			 forge-pullreq-list-mode
+			 image-dired-mode
+			 image-dired-thumbnail-mode
+			 Info-mode
+			 ))
 #+end_src
