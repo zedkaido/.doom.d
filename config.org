@@ -97,10 +97,10 @@ Allow 20MB of memory before calling garbage collection. GS runs less often, sped
 The *ultimate* font for hackers.
 #+begin_src emacs-lisp
 (setq
- doom-font (font-spec :family "JetBrains Mono" :size 13)
- doom-big-font (font-spec :family "JetBrains Mono" :size 13)
- doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 13)
- doom-serif-font (font-spec :family "JetBrains Mono" :size 13))
+ doom-font (font-spec :family "JetBrains Mono Regular" :size 16)
+ doom-big-font (font-spec :family "JetBrains Mono Regular" :size 16)
+ doom-variable-pitch-font (font-spec :family "JetBrains Mono Regular" :size 16)
+ doom-serif-font (font-spec :family "JetBrains Mono Regular" :size 16))
 #+end_src
 
 *** Theme

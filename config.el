@@ -40,10 +40,10 @@
 (setq gc-cons-threshold 24242424)
 
 (setq
- doom-font (font-spec :family "JetBrains Mono" :size 13)
- doom-big-font (font-spec :family "JetBrains Mono" :size 13)
- doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 13)
- doom-serif-font (font-spec :family "JetBrains Mono" :size 13))
+ doom-font (font-spec :family "JetBrains Mono Regular" :size 16)
+ doom-big-font (font-spec :family "JetBrains Mono Regular" :size 16)
+ doom-variable-pitch-font (font-spec :family "JetBrains Mono Regular" :size 16)
+ doom-serif-font (font-spec :family "JetBrains Mono Regular" :size 16))
 
 (load-theme 'zk-white t)
 
